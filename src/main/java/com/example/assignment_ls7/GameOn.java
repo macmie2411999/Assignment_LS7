@@ -10,14 +10,26 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = "/gameon")
 public class GameOn extends HttpServlet {
-    Integer selectedNumber = createRandomNumber();
-    Integer guessWork = 0;
-    Integer timeOfGuesses = 0;
-    String guessedNumbers = " None";
-    String hints = " From 0 to 1000";
+//    Integer selectedNumber = createRandomNumber();
+//    Integer guessWork = 0;
+//    Integer timeOfGuesses = 0;
+//    String guessedNumbers = " None";
+//    String hints = " From 0 to 1000";
+
+    Integer selectedNumber;
+    Integer guessWork;
+    Integer timeOfGuesses;
+    String guessedNumbers;
+    String hints;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        selectedNumber = createRandomNumber();
+        guessWork = 0;
+        timeOfGuesses = 0;
+        guessedNumbers = " None";
+        hints = " From 0 to 1000";
+
         request.setAttribute("timeOfGuesses", timeOfGuesses);
         request.setAttribute("guessedNumbers", guessedNumbers);
         request.setAttribute("hints", hints);
@@ -29,21 +41,30 @@ public class GameOn extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-//        System.out.println(request.getParameter("guessWork"));
-        guessWork = Integer.parseInt(request.getParameter("guessWork"));
-        if (guessWork < selectedNumber) {
-            hints = "Designated Number Is Bigger Than ";
-        } else if (guessWork > selectedNumber) {
-            hints = "Designated Number Is Smaller Than ";
-        } else {
-            response.sendRedirect(request.getContextPath() + "/congratulation");
-        }
 
-        timeOfGuesses++;
-        guessedNumbers += guessWork;
-        request.setAttribute("timeOfGuesses", timeOfGuesses);
-        request.setAttribute("guessedNumbers", guessedNumbers);
-        request.setAttribute("hints", hints + guessWork);
+        if (request.getParameter("button").equals("okay")) {
+            System.out.println("SN: " + selectedNumber);
+            guessWork = Integer.parseInt(request.getParameter("guessWork"));
+            System.out.println("GW: " + guessWork);
+            if (guessWork.equals(selectedNumber)) {
+                response.sendRedirect(request.getContextPath() + "/congratulation");
+            } else {
+                if (guessWork < selectedNumber) {
+                    hints = "Guess Bigger!";
+                } else {
+                    hints = "Guess Smaller!";
+                }
+
+                timeOfGuesses++;
+                guessedNumbers = "" + guessWork;
+                request.setAttribute("timeOfGuesses", timeOfGuesses);
+                request.setAttribute("guessedNumbers", guessedNumbers);
+                request.setAttribute("hints", hints);
+
+                RequestDispatcher dispatcher = request.getRequestDispatcher("gameon.jsp");
+                dispatcher.forward(request, response);
+            }
+        }
     }
 
     public Integer createRandomNumber() {

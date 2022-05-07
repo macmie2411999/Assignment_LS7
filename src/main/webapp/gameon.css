@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 body{
     height: 100vh;
     background: linear-gradient(to right,#7f53ac,#657ced);

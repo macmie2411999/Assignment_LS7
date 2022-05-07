@@ -17,8 +17,6 @@
 
 <body>
 
-
-
 <div class="container" id="myModal" role="dialog">
     <div class="modal-dialog">
         <div class="card">

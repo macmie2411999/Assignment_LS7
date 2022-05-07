@@ -20,17 +20,21 @@
 
 <body>
 <div class="container">
-    <h3>I am Thinking of a number Between 1-1000.</h3>
-    <h3>Can you Guess it </h3>
-    <input type="text" placeholder="Number" id="guessWork" name="guessWork"><br>
-
-    <form action="<%= request.getContextPath() %>/gameon" method="post">
+    <h2>I am Thinking of a number Between 1-1000.</h2>
+    <h2>Can you Guess it </h2>
+    <form action="http://localhost:8080/gameon" method="post">
+        <input type="text" placeholder="Number" id="guessWork" name="guessWork"></br>
+        </br>
         <button id="guessButton" name="button" value="okay">GUESS</button>
+        <p id="timeOfGuesses" name="timeOfGuesses">Times of Guessing: <%= request.getAttribute("timeOfGuesses")%>
+        </p>
+        <p id="showGuessedNumbers" name="showGuessedNumbers">Guessed
+            number: <%= request.getAttribute("guessedNumbers")%>
+        </p>
+        <p id="showHints" name="showHints">Hint: <%= request.getAttribute("hints")%>
+        </p>
     </form>
 
-    <p id="timeOfGuesses" name="timeOfGuesses">Times of Guessing: <%= request.getAttribute("timeOfGuesses")%></p>
-    <p id="showGuessedNumbers" name="showGuessedNumbers">Guessed number: <%= request.getAttribute("guessedNumbers")%></p>
-    <p id="showHints" name="showHints">Hint: <%= request.getAttribute("hints")%></p>
     </br>
     <form action="http://localhost:8080/welcome" method="get">
         <button class="btn btn-out btn-square continue" name="button" value="okay">Exit</button>
