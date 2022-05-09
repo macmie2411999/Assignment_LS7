@@ -22,14 +22,14 @@
         <div class="card">
             <div class="text-right cross"><i class="fa fa-times"></i></div>
             <div class="card-body text-center"><img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
-                <h4>CONGRATULATIONS!</h4>
-                <p>You have been personally selected to take part in our 2017 annual visitors survey!</p>
-<%--                <form action="http://localhost:8080/welcome" method="get">--%>
-<%--                    <button class="btn btn-out btn-square continue" name="button" value="okay">CONTINUE</button>--%>
-<%--                </form>--%>
-                <form action="" method="post">
-                    <button class="btn btn-out btn-square continue" name="button" value="okay">CONTINUE</button>
+                <h4>CONGRATULATIONS <%= session.getAttribute("namePlayer") %>!</h4>
+                <p>You've got the right number after <%= session.getAttribute("finalTimesOfGuessing") %> times!</p>
+                <form action="http://localhost:8080/leaderboard" method="post">
+                    <button class="btn btn-out btn-square continue" name="button" value="okay">Leader Board</button>
                 </form>
+<%--                <form action="" method="post">--%>
+<%--                    <button class="btn btn-out btn-square continue" name="button" value="okay">Leader Board</button>--%>
+<%--                </form>--%>
             </div>
         </div>
     </div>

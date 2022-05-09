@@ -18,10 +18,10 @@ public class Congratulation extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String valueButton = request.getParameter("button");
-        if(valueButton.equals("okay")){
-            response.sendRedirect(request.getContextPath() + "/welcome");
-        }
+//        String valueButton = request.getParameter("button");
+//        if(valueButton.equals("okay")){
+//            response.sendRedirect(request.getContextPath() + "/welcome");
+//        }
 
     }
 }
