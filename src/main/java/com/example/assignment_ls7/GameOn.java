@@ -39,6 +39,8 @@ public class GameOn extends HttpServlet {
         guessedNumbers = " None";
         hints = " From 0 to 1000";
 
+        System.out.println("The Selected Number Is: " + selectedNumber);
+
         request.setAttribute("timeOfGuesses", timeOfGuesses);
         request.setAttribute("guessedNumbers", guessedNumbers);
         request.setAttribute("hints", hints);
